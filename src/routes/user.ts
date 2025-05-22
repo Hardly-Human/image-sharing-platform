@@ -16,7 +16,12 @@ router.get('/signup', DisplaySignUpPage);
 // Login Route (No DB interaction, just redirect)
 router.get('/login', DisplayLogInPage);
 
+// Auth callback redirect
+router.get('/callback', (req, res) => {
+    res.redirect('/profile');
+});
+
 // User Profile Page
-router.get('/profile',ensureUserExists, DisplayUserProfilePage);
+router.get('/profile', ensureUserExists, DisplayUserProfilePage);
 
 export default router;

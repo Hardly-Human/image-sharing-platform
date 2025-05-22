@@ -1,17 +1,35 @@
-version: '3.8'
 services:
   app:
     container_name: app
-    build: .
+    network_mode: host
+    build:
+      context: .
+      args:
+        - PORT=${PORT}
+        - DB_HOST=${DB_HOST}
+        - DB_PORT=${DB_PORT}
+        - DB_USERNAME=${DB_USERNAME}
+        - DB_PASSWORD=${DB_PASSWORD}
+        - DB_NAME=${DB_NAME}
+        - AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
+        - AUTH0_ISSUER_BASE_URL=${AUTH0_ISSUER_BASE_URL}
+        - AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
+        - AUTH0_BASE_URL=${AUTH0_BASE_URL}
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - AWS_REGION=${AWS_REGION}
+        - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
+        - CLOUD_FRONT_DOMAIN=${CLOUD_FRONT_DOMAIN}
+    environment:
+      - NODE_ENV=production
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     depends_on:
       - postgres
 
   postgres:
     container_name: postgres
+    network_mode: host
     image: postgres:15
     restart: always
     env_file:
