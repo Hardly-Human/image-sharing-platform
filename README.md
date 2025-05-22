@@ -14,7 +14,7 @@ Welcome to the **Image Sharing Platform**, a web application where users can upl
 
 ## 🌐 Live Demo
 
-Check out the live deployment of the Image Sharing Platform here: [Live Demo](http://34.41.246.31/)
+Check out the live deployment of the Image Sharing Platform here: [Live Demo](http://34.130.95.198/)
 
 ## 🚀 Technologies Used
 
